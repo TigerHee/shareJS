@@ -101,6 +101,12 @@ Object.assign(obj1, obj2)
   isTrue && console.log(1);
 ```
 
+
+> 生成指定长度数组：
+```sh
+  Array.from(new Array(10).keys());
+```
+
 *********************************************
  一起学习前端共同进步！
 `qq群：635833997`
