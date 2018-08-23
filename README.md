@@ -60,6 +60,16 @@
     另： Array.from('string')
 ```
 
+> 合并对象：
+```sh
+let obj1 = {a:1, b:2};
+let obj2 = {b:3, c:4};
+
+Object.assign(obj1, obj2)
+  等同于
+{...obj1, ...obj2}
+```
+
 - 常用方法：
 
 > 数字前补0：
