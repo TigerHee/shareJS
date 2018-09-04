@@ -96,8 +96,10 @@ Object.assign(obj1, obj2)
 > 金钱格式化：
 ```sh
   let money = 11111;
-  法1: money.toLocaleString('en-US');
-  法2: Intl.NumberFormat().format(money)
+  法1: 
+  money.toLocaleString('en-US');
+  法2: 
+  Intl.NumberFormat().format(money)
 ```
 
 > 短路逻辑代替if：
