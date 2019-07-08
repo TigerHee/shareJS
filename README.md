@@ -96,10 +96,12 @@ Object.assign(obj1, obj2)
 > 金钱格式化：
 ```sh
   let money = 11111;
-  法1: 
+  method 1: 
   money.toLocaleString('en-US');
-  法2: 
+  method 2: 
   Intl.NumberFormat().format(money)
+  method 3: 
+  String(money).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 ```
 
 > 短路逻辑代替if：
@@ -109,9 +111,9 @@ Object.assign(obj1, obj2)
 
 > RGB to Hex：
 ```sh
-  function RGBtoHEX(rgb){
-	  return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
-  }
+function RGBtoHEX(rgb){
+  return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
+}
 ```
 
 > 生成指定长度数组：
