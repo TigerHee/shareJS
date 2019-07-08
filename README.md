@@ -96,12 +96,15 @@ Object.assign(obj1, obj2)
 > 金钱格式化：
 ```sh
   let money = 11111;
+  
   method 1: 
   money.toLocaleString('en-US');
+  
   method 2: 
-  Intl.NumberFormat().format(money)
+  Intl.NumberFormat().format(money);
+  
   method 3: 
-  String(money).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  String(money).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 ```
 
 > 短路逻辑代替if：
