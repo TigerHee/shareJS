@@ -112,5 +112,37 @@ Object.assign(obj1, obj2)
 ```sh
   Array.from(new Array(10).keys());
 ```
+- 正则进阶：
+
+> 捕获括号：
+```sh
+  匹配 'tigerHee' 并且记住匹配项
+  /(tigerHee)/
+```
+
+> 非捕获括号：
+```sh
+  匹配 'tigerHee' 但是不记住匹配项
+  /(?:tigerHee)/
+```
+
+> 先行断言：
+```sh
+  匹配'tiger'仅仅当'tiger'后面跟着'Hee'
+  /tiger(?=Hee)/
+```
+
+> 后行断言：
+```sh
+  匹配'Hee'仅仅当'Hee'前面是'tiger'
+  /(?<=tiger)Hee/
+```
+
+> 正向否定查找：
+```sh
+  匹配'tiger'仅仅当'tiger'后面不跟着'java'
+  /tiger(?!java)/
+```
+
 
 
