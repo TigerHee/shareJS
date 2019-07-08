@@ -107,6 +107,12 @@ Object.assign(obj1, obj2)
   isTrue && console.log(1);
 ```
 
+> RGB to Hex：
+```sh
+  function RGBtoHEX(rgb){
+	  return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
+  }
+```
 
 > 生成指定长度数组：
 ```sh
