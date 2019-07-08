@@ -87,9 +87,11 @@ Object.assign(obj1, obj2)
 > 数组求和：
 ```sh
   var arr = [1,2,3,4,5];
-  法1：
+  
+  method 1: 
   var sum = eval(arr.join('+'));
-  法2：
+  
+  method 2: 
   var sum = arr.reduce((prev,cur) => prev + cur);
 ```
 
