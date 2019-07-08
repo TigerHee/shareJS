@@ -56,18 +56,21 @@
 
 > 字符串转数组：
 ```sh
+  method 1: 
   [...'string']
-    另： Array.from('string')
+  
+  method 2: 
+  Array.from('string')
 ```
 
 > 合并对象：
 ```sh
-let obj1 = {a:1, b:2};
-let obj2 = {b:3, c:4};
+  let obj1 = {a:1, b:2};
+  let obj2 = {b:3, c:4};
 
-Object.assign(obj1, obj2)
-  等同于
-{...obj1, ...obj2}
+  Object.assign(obj1, obj2)
+    等同于
+  {...obj1, ...obj2}
 ```
 
 - 常用方法：
@@ -116,9 +119,9 @@ Object.assign(obj1, obj2)
 
 > RGB to Hex：
 ```sh
-function RGBtoHEX(rgb){
-  return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
-}
+  function RGBtoHEX(rgb){
+    return ((1<<24) + (rgb.r<<16) + (rgb.g<<8) + rgb.b).toString(16).substr(1);
+  }
 ```
 
 > 生成指定长度数组：
