@@ -16,7 +16,7 @@
 
 - 妙用隐式转换：
 
->数字字符串转number:
+> 字字符串转number:
 ```sh
   +'123'
 ```
@@ -26,7 +26,7 @@
   +new Date()
 ```
 
-> 数组/多维数组转逗号分隔字符串：
+> 数组/多维数组转为逗号分隔字符串(可用于多维数组转一维)：
 ```sh
   ""+[1, 2 , 3, 3, [2, 3, 4]]
 ```
@@ -38,15 +38,15 @@
   var a=1;
   var b=2;
   [a, b] = [b, a];
-  console.log('a ===', a);
-  console.log('b ===', b);
+  console.log(a, b);
 ```
 
 - 扩展运算符：
 
-> 取数组最大值：
+> 取数组最大值/最小值：
 ```sh
   Math.max(...[1,2,3])
+  Math.min(...[1,2,3])
 ```
 
 > 生成时间：
@@ -68,9 +68,9 @@
   let obj1 = {a:1, b:2};
   let obj2 = {b:3, c:4};
 
-  Object.assign(obj1, obj2)
-    等同于
   {...obj1, ...obj2}
+    等同于
+  Object.assign(obj1, obj2)
 ```
 
 - 常用方法：
@@ -98,7 +98,7 @@
   var sum = arr.reduce((prev,cur) => prev + cur);
 ```
 
-> 金钱格式化：
+> 金钱格式化(千分)：
 ```sh
   let money = 11111;
   
