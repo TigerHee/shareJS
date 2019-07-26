@@ -77,7 +77,7 @@
 
 > 数字前补0：
 ```sh
-  preFixNum(num, length) {
+  function preFixNum(num, length) {
     return (Array(length).join('0') + num).slice(-length);
   }
 ```
