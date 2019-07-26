@@ -124,6 +124,11 @@
   }
 ```
 
+> 延时函数
+```
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+```
+
 > 生成指定长度数组：
 ```sh
   Array.from(new Array(10).keys());
