@@ -124,7 +124,7 @@
   }
 ```
 
-> 延时函数
+> 延时函数:
 ```
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 ```
