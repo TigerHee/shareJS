@@ -11,9 +11,9 @@
 ----
 ### 核心API:
 1. Saga 辅助函数:
-  - takeEvery
+  - takeEvery:
     允许多个实例同时启动
-  - takeLatest
+  - takeLatest:
     在任何时刻 takeLatest 只允许执行一个任务，并且这个任务是最后被启动的那个，如果之前已经有一个任务在执行，那之前的这个任务会自动被取消
 2. Effect Creators
   - take(pattern)
