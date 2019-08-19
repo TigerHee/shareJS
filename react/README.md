@@ -1,1 +1,6 @@
-### React 学习过程中的一些笔记
+### React 学习过程中的一些笔记, 包含：
+
+- React 知识点
+- Redux
+- Redux-saga
+- React源码学习
