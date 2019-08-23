@@ -3,4 +3,4 @@
 - React 知识点
 - Redux
 - Redux-saga
-- React源码学习
+- React源码学习( version: 16.6.1 )
