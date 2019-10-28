@@ -1,7 +1,9 @@
 ## 目录
 
+持续更新中，不建议直接fork，欢迎star
+
 ### ***JS***
-- [js常用小技巧](/js常用小技巧.md)
+- [js常用小技巧( 推荐:★★★★★ )](/js常用小技巧.md)
 - [宏任务与微任务](/js/宏任务与微任务.md)
 - [call,apply与bind](/js/call,apply与bind.md)
 - [new运算符](/js/new运算符.md)
@@ -19,6 +21,7 @@
 - [10.React源码学习-expirationTime](/react/10.React源码学习-expirationTime.md)
 - [11.React源码学习-任务调度](/react/11.React源码学习-任务调度.md)
 - [12.React源码学习-beginWork](/react/12.React源码学习-beginWork.md)
+- [13.React源码学习-commit](/react/13.React源码学习-commit.md)
 
 ### ***FE***
 - [重绘与回流](/FE/重绘与回流.md)
@@ -34,7 +37,3 @@
 
 ### ***git***
 - [git常用指令](/git/README.md)
-
-
-持续更新中，不建议直接fork，欢迎star
-
