@@ -1,5 +1,3 @@
-# js常用小技巧 - javascript(js) commonly used skill - 谢谢star
-
 - 小数取整：
 
 ```sh
