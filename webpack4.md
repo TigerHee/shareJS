@@ -78,13 +78,13 @@ npm i webpack webpack-cli -D
 let path = require('path')   // 相对路径变绝对路径
 
 module.exports = {
-    mode: 'production', // 模式 默认 production development
-    entry: './src/index',    // 入口
-    output: {
-        filename: 'bundle.[hash:8].js',   // hash: 8只显示8位
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: ''  // // 给所有打包文件引入时加前缀，包括css，js，img，如果只想处理图片可以单独在url-loader配置中加publicPath
-    }
+  mode: 'production', // 模式 默认 production development
+  entry: './src/index',    // 入口
+  output: {
+    filename: 'bundle.[hash:8].js',   // hash: 8只显示8位
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: ''  // // 给所有打包文件引入时加前缀，包括css，js，img，如果只想处理图片可以单独在url-loader配置中加publicPath
+  }
 }
 ```
 ## 本地服务
@@ -109,15 +109,15 @@ devServer: {
 ```
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 plugins: [ // 放着所有webpack插件
-    new HtmlWebpackPlugin({ // 用于使用模板打包时生成index.html文件，并且在run dev时会将模板文件也打包到内存中
-      template: './index.html', // 模板文件
-      filename: 'index.html', // 打包后生成文件
-      hash: true, // 添加hash值解决缓存问题
-      minify: { // 对打包的html模板进行压缩
-        removeAttributeQuotes: true, // 删除属性双引号
-        collapseWhitespace: true // 折叠空行变成一行
-      }
-    })
+  new HtmlWebpackPlugin({ // 用于使用模板打包时生成index.html文件，并且在run dev时会将模板文件也打包到内存中
+    template: './index.html', // 模板文件
+    filename: 'index.html', // 打包后生成文件
+    hash: true, // 添加hash值解决缓存问题
+    minify: { // 对打包的html模板进行压缩
+      removeAttributeQuotes: true, // 删除属性双引号
+      collapseWhitespace: true // 折叠空行变成一行
+    }
+  })
 ]
 
 ```
@@ -134,29 +134,29 @@ plugins: [ // 放着所有webpack插件
 // style-loader 作用：把 css 插入到head标签中
 // loader的执行顺序： 默认是从右向左（从下向上）
 module: {    // 模块
-        rules: [   // 规则
-            // style-loader 把css插入head标签中
-            // loader 功能单一
-            // 多个loader 需要 []
-            // 顺便默认从右到左
-            // 也可以写成对象方式
-            {
-                test: /\.css$/,   // css 处理
-                // use: 'css-loader'
-                // use: ['style-loader', 'css-loader'],
-                use: [
-                    // {
-                    //     loader: 'style-loader',
-                    //     options: {
-                    //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
-                    //     }
-                    // },
-                    MiniCssExtractPlugin.loader,
-                    'css-loader', // css-loader 用来解析@import这种语法,
-                    'postcss-loader'
-                ]
-            }
-        ]
+  rules: [   // 规则
+    // style-loader 把css插入head标签中
+    // loader 功能单一
+    // 多个loader 需要 []
+    // 顺便默认从右到左
+    // 也可以写成对象方式
+    {
+      test: /\.css$/,   // css 处理
+      // use: 'css-loader'
+      // use: ['style-loader', 'css-loader'],
+      use: [
+        // {
+        //     loader: 'style-loader',
+        //     options: {
+        //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
+        //     }
+        // },
+        MiniCssExtractPlugin.loader,
+        'css-loader', // css-loader 用来解析@import这种语法,
+        'postcss-loader'
+      ]
+    }
+  ]
 }
 ```
 
@@ -167,23 +167,23 @@ module: {    // 模块
 
 ```
 {
-    test: /\.less$/,   // less 处理
-    // use: 'css-loader'
-    // use: ['style-loader', 'css-loader'],
-    use: [
-        // {
-        //     loader: 'style-loader',
-        //     options: {
-        //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
-        //     }
-        // },
-        MiniCssExtractPlugin.loader,   // 这样相当于抽离成一个css文件， 如果希望抽离成分别不同的css, 需要再引入MiniCssExtractPlugin，再配置
-        'css-loader', // css-loader 用来解析@import这种语法
-        'postcss-loader',
-        'less-loader' // less-loader less -> css
-        // sass node-sass sass-loader
-        // stylus stylus-loader
-    ]
+  test: /\.less$/,   // less 处理
+  // use: 'css-loader'
+  // use: ['style-loader', 'css-loader'],
+  use: [
+    // {
+    //     loader: 'style-loader',
+    //     options: {
+    //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
+    //     }
+    // },
+    MiniCssExtractPlugin.loader,   // 这样相当于抽离成一个css文件， 如果希望抽离成分别不同的css, 需要再引入MiniCssExtractPlugin，再配置
+    'css-loader', // css-loader 用来解析@import这种语法
+    'postcss-loader',
+    'less-loader' // less-loader less -> css
+    // sass node-sass sass-loader
+    // stylus stylus-loader
+  ]
 }
 ```
 
@@ -201,26 +201,27 @@ let MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 压缩css
 
 plugins: [
-    new MiniCssExtractPlugin({
-        filename: 'css/main.css'
-    })
+  new MiniCssExtractPlugin({
+      filename: 'css/main.css'
+  })
 ]
 
 {
-    test: /\.css$/,   // css 处理
-    // use: 'css-loader'
-    // use: ['style-loader', 'css-loader'],
-    use: [
-        // {
-        //     loader: 'style-loader',
-        //     options: {
-        //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
-        //     }
-        // },
-        MiniCssExtractPlugin.loader,   // 抽离
-        'css-loader', // css-loader 用来解析@import这种语法,
-        'postcss-loader'
-    ]
+  test: /\.css$/,   // css 处理
+  // use: 'css-loader'
+  // use: ['style-loader', 'css-loader'],
+  use: [
+    // {
+    //     loader: 'style-loader',
+    //     options: {
+    //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
+    //     }
+    // },
+    // 此时不需要style-loader
+    MiniCssExtractPlugin.loader,   // 抽离
+    'css-loader', // css-loader 用来解析@import这种语法,
+    'postcss-loader'
+  ]
 }
 
 ```
@@ -230,18 +231,24 @@ plugins: [
 ## 压缩css和js
 
 ```
+// 用了`mini-css-extract-plugin`抽离css为link需使用`optimize-css-assets-webpack-plugin`进行压缩css,使用此方法压缩了css需要`uglifyjs-webpack-plugin`压缩js
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
-optimization: {   // 优化项目
+module.exports = {
+  optimization: {              // 优化项
     minimizer: [
-        new UglifyJsPlugin({     // 优化js
-            cache: true,   // 是否缓存
-            parallel: true,   // 是否并发
-            // sourceMap: true // 源码映射 set to true if you want JS source maps
-        }),
-        new OptimizeCSSAssetsPlugin({})    // css 的优化
+      new UglifyJsPlugin({     // 优化js
+        cache: true,           // 是否缓存
+        parallel: true,        // 是否并发打包
+        // sourceMap: true     // 源码映射 set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})    // css 的优化
     ]
+  },
+  mode: 'production',
+  entry: '',
+  output: {},
 }
 
 ```
@@ -253,40 +260,40 @@ optimization: {   // 优化项目
 ```
 // css
 {
-    test: /\.css$/,   // css 处理
-    // use: 'css-loader'
-    // use: ['style-loader', 'css-loader'],
-    use: [
-        // {
-        //     loader: 'style-loader',
-        //     options: {
-        //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
-        //     }
-        // },
-        MiniCssExtractPlugin.loader,
-        'css-loader', // css-loader 用来解析@import这种语法,
-        'postcss-loader'
-    ]
+  test: /\.css$/,   // css 处理
+  // use: 'css-loader'
+  // use: ['style-loader', 'css-loader'],
+  use: [
+    // {
+    //     loader: 'style-loader',
+    //     options: {
+    //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
+    //     }
+    // },
+    MiniCssExtractPlugin.loader,
+    'css-loader', // css-loader 用来解析@import这种语法,
+    'postcss-loader'
+  ]
 }
 // less
 {
-    test: /\.less$/,   // less 处理
-    // use: 'css-loader'
-    // use: ['style-loader', 'css-loader'],
-    use: [
-        // {
-        //     loader: 'style-loader',
-        //     options: {
-        //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
-        //     }
-        // },
-        MiniCssExtractPlugin.loader,   // 这样相当于抽离成一个css文件， 如果希望抽离成分别不同的css, 需要再引入MiniCssExtractPlugin，再配置
-        'css-loader', // css-loader 用来解析@import这种语法
-        'postcss-loader',
-        'less-loader' // less-loader less -> css
-        // sass node-sass sass-loader
-        // stylus stylus-loader
-    ]
+  test: /\.less$/,   // less 处理
+  // use: 'css-loader'
+  // use: ['style-loader', 'css-loader'],
+  use: [
+    // {
+    //     loader: 'style-loader',
+    //     options: {
+    //         insertAt: 'top' // 将css标签插入最顶头  这样可以自定义style不被覆盖
+    //     }
+    // },
+    MiniCssExtractPlugin.loader,   // 这样相当于抽离成一个css文件， 如果希望抽离成分别不同的css, 需要再引入MiniCssExtractPlugin，再配置
+    'css-loader', // css-loader 用来解析@import这种语法
+    'postcss-loader',
+    'less-loader' // less-loader less -> css
+    // sass node-sass sass-loader
+    // stylus stylus-loader
+  ]
 },
 ```
 
@@ -296,9 +303,9 @@ postcss 需要配置文档   `postcss.config1.js`
 
 ```
 module.exports = {
-    plugins: [
-        require('autoprefixer')
-    ]
+  plugins: [
+    require('autoprefixer')
+  ]
 }
 ```
 
@@ -308,19 +315,19 @@ module.exports = {
 
 ```
 {
-    test: /\.js$/,
-    use: {
-        loader: 'babel-loader',
-        options: {
-            presets: [
-                '@babel/preset-env'
-            ],
-            plugins:[
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-            ]
-        }
+  test: /\.js$/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env'
+      ],
+      plugins:[
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+      ]
     }
+  }
 }
 ```
 
@@ -366,8 +373,8 @@ new webpack.ProvidePlugin({
 
 ```
 {
-    test: require.resolve('jquery'),
-    use: 'expose-loader?$'
+  test: require.resolve('jquery'),
+  use: 'expose-loader?$'
 }
 ```
 
@@ -393,9 +400,9 @@ new webpack.ProvidePlugin({
 从输出的bundle 中排除依赖
 
 ```
- externals: {
+externals: {
   jquery: 'jQuery'
- }
+}
 ```
 
 此时在index.js上
@@ -418,16 +425,16 @@ console.log($, 123456)   // 可以正常运行
 
 ```
 {
-    test: /\.(png|jpg|gif)$/,
-    // 当图片小于多少，用base64,否则用file-loader产生真实的图片
-    use: {
-        loader: 'url-loader',
-        options: {
-            limit: 1,  // 200k 200 * 1024
-            outputPath: '/img/',   // 打包后输出地址
-            publicPath: 'http://www.mayufo.cn'
-        }
+  test: /\.(png|jpg|gif)$/,
+  // 当图片小于多少，用base64,否则用file-loader产生真实的图片
+  use: {
+    loader: 'url-loader',
+    options: {
+      limit: 1,  // 200k 200 * 1024
+      outputPath: '/img/',   // 打包后输出地址
+      publicPath: 'http://www.mayufo.cn'
     }
+  }
 }
 ```
 
@@ -450,8 +457,8 @@ document.body.appendChild(image)
 
 ```
 div {
-    background: url("./logo.png");
-   }
+  background: url("./logo.png");
+ }
 ```
 
 第三种情况: 解析`html`中的`image`
@@ -460,8 +467,8 @@ div {
 
 ```
 {
-    test: /\.html$/,
-    use: 'html-withimg-loader'
+  test: /\.html$/,
+  use: 'html-withimg-loader'
 }
 ```
 
@@ -473,16 +480,16 @@ div {
 
 ```
 {
-    test: /\.(png|jpg|gif)$/,
-    // 当图片小于多少，用base64,否则用file-loader产生真实的图片
-    use: {
-        loader: 'url-loader',
-        options: {
-            limit: 1,  // 200k 200 * 1024
-            outputPath: '/img/',   // 打包后输出地址
-            publicPath: 'http://www.mayufo.cn'
-        }
+  test: /\.(png|jpg|gif)$/,
+  // 当图片小于多少，用base64,否则用file-loader产生真实的图片
+  use: {
+    loader: 'url-loader',
+    options: {
+      limit: 1,  // 200k 200 * 1024
+      outputPath: '/img/',   // 打包后输出地址
+      publicPath: 'http://www.mayufo.cn'
     }
+  }
 }
 ```
 
@@ -491,26 +498,26 @@ div {
 图片
 
 ```
- {
-    test: /\.(png|jpg|gif)$/,
-    // 当图片小于多少，用base64,否则用file-loader产生真实的图片
-    use: {
-        loader: 'url-loader',
-        options: {
-            limit: 1,  // 200k 200 * 1024
-            outputPath: 'img/'   // 打包后输出地址 在dist/img
-        }
+{
+  test: /\.(png|jpg|gif)$/,
+  // 当图片小于多少，用base64,否则用file-loader产生真实的图片
+  use: {
+    loader: 'url-loader',
+    options: {
+      limit: 1,  // 200k 200 * 1024
+      outputPath: 'img/'   // 打包后输出地址 在dist/img
     }
- },
+  }
+},
 ```
 
 css
 
 ```
 plugins: [
- new MiniCssExtractPlugin({
-            filename: 'css/main.css'
-        }),
+new MiniCssExtractPlugin({
+  filename: 'css/main.css'
+}),
 ]
 ```
 
@@ -518,9 +525,9 @@ plugins: [
 
 ```
 output: {
-    filename: 'bundle.[hash:8].js',   // hash: 8只显示8位
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://www.mayufo.cn'  // 给静态资源统一加
+  filename: 'bundle.[hash:8].js',   // hash: 8只显示8位
+  path: path.resolve(__dirname, 'dist'),
+  publicPath: 'http://www.mayufo.cn'  // 给静态资源统一加
 },
 ```
 
@@ -529,16 +536,16 @@ output: {
 
 ```
 {
-    test: /\.(png|jpg|gif)$/,
-    // 当图片小于多少，用base64,否则用file-loader产生真实的图片
-    use: {
-        loader: 'url-loader',
-        options: {
-            limit: 1,  // 200k 200 * 1024
-            outputPath: '/img/',   // 打包后输出地址
-            publicPath: 'http://www.mayufo.cn'
-        }
+  test: /\.(png|jpg|gif)$/,
+  // 当图片小于多少，用base64,否则用file-loader产生真实的图片
+  use: {
+    loader: 'url-loader',
+    options: {
+      limit: 1,  // 200k 200 * 1024
+      outputPath: '/img/',   // 打包后输出地址
+      publicPath: 'http://www.mayufo.cn'
     }
+  }
 }
 ```
 
@@ -550,27 +557,27 @@ let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: 'development',
-    entry: {
-        home: './src/index.js',
-        other: './src/other.js'
-    },
-    output: {
-        filename: "[name].js",
-        path: path.resolve(__dirname, 'dist2')
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './index.html',
-            filename: 'home.html',
-            chunks: ['home']
-        }),
-        new HtmlWebpackPlugin({
-            template: './index.html',
-            filename: 'other.html',
-            chunks: ['other', 'home']   // other.html 里面有 other.js & home.js
-        }),
-    ]
+  mode: 'development',
+  entry: {
+    home: './src/index.js',
+    other: './src/other.js'
+  },
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, 'dist2')
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      filename: 'home.html',
+      chunks: ['home']
+    }),
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      filename: 'other.html',
+      chunks: ['other', 'home']   // other.html 里面有 other.js & home.js
+    }),
+  ]
 }
 
 ```
@@ -592,9 +599,9 @@ module.exports = {
 ```
 watch: true,
 watchOptions: {
-    poll: 1000,   // 每秒检查一次变动
-    aggregateTimeout: 300,  // 当第一个文件更改，会在重新构建前增加延迟
-    ignored: /node_modules/  // 对于某些系统，监听大量文件系统会导致大量的 CPU 或内存占用。这个选项可以排除一些巨大的文件夹，
+  poll: 1000,   // 每秒检查一次变动
+  aggregateTimeout: 300,  // 当第一个文件更改，会在重新构建前增加延迟
+  ignored: /node_modules/  // 对于某些系统，监听大量文件系统会导致大量的 CPU 或内存占用。这个选项可以排除一些巨大的文件夹，
 },
 ```
 
@@ -611,10 +618,10 @@ watchOptions: {
 ```
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 output: {
-    path: path.resolve(process.cwd(), 'dist'),
+  path: path.resolve(process.cwd(), 'dist'),
 },
 plugins: [
-    new CleanWebpackPlugin()
+  new CleanWebpackPlugin()
 ]
 ```
 
@@ -629,8 +636,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
   plugins: [
-     new CopyWebpackPlugin([
-    {from: './src/doc', to: './public'}
+    new CopyWebpackPlugin([
+      {from: './src/doc', to: './public'}
     ])
   ]
 }
@@ -665,7 +672,7 @@ let express = require('express')
 let app = express();
 
 app.get('/api/user', (res) => {
-    res.json({name: 'mayufo'})
+  res.json({name: 'mayufo'})
 })
 
 app.listen(3000)   // 服务端口在3000
@@ -686,7 +693,7 @@ let xhr = new XMLHttpRequest();
 xhr.open('GET', '/api/user', true);
 
 xhr.onload = function () {
-    console.log(xhr.response)
+  console.log(xhr.response)
 }
 
 xhr.send();
@@ -699,7 +706,7 @@ xhr.send();
 ```
 devServer: {
   proxy: {
-      '/api': 'http://localhost:3000' // 配置一个代理
+    '/api': 'http://localhost:3000' // 配置一个代理
   }
 },
 ```
@@ -715,7 +722,7 @@ let app = express();
 
 
 app.get('/user', (res) => {
-    res.json({name: 'mayufo'})
+  res.json({name: 'mayufo'})
 })
 
 app.listen(3000)   // 服务端口在3000
@@ -726,12 +733,12 @@ app.listen(3000)   // 服务端口在3000
 
 ```
 devServer: {
-    proxy: {
-        '/api': {
-            target: 'http://localhost:3000',
-            pathRewrite: {'^/api': ''}
-        }
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000',
+      pathRewrite: {'^/api': ''}
     }
+  }
 }
 ```
 
@@ -739,20 +746,20 @@ devServer: {
 
 ```
 devServer: {
-    // proxy: {
-    //     '/api': 'http://localhost:3000' // 配置一个代理
-    // }
-    //   proxy: {   // 重写方式 把请求代理到express 上
-    //       '/api': {
-    //           target: 'http://localhost:3000',
-    //           pathRewrite: {'^/api': ''}
-    //       }
-    //   }
-    before: function (app) {  // 勾子
-        app.get('/api/user', (req, res) => {
-            res.json({name: 'mayufo - before'})
-        })
-    }
+  // proxy: {
+  //     '/api': 'http://localhost:3000' // 配置一个代理
+  // }
+  //   proxy: {   // 重写方式 把请求代理到express 上
+  //       '/api': {
+  //           target: 'http://localhost:3000',
+  //           pathRewrite: {'^/api': ''}
+  //       }
+  //   }
+  before: function (app) {  // 勾子
+      app.get('/api/user', (req, res) => {
+          res.json({name: 'mayufo - before'})
+      })
+  }
 },
 ```
 
@@ -784,7 +791,7 @@ let compiler = webpack(config)
 app.use(middle(compiler))
 
 app.get('/user', (req, res) => {
-    res.json({name: 'mayufo'})
+  res.json({name: 'mayufo'})
 })
 
 
@@ -830,15 +837,15 @@ You may need an appropriate loader to handle this file type.
 配置`webpack.config.js`
 ```
 {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader', {
-        loader: 'postcss-loader',
-        options: {
-            plugins: (loader) => [
-                require("postcss-custom-properties")
-            ]
-        }
-    }]
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader', {
+    loader: 'postcss-loader',
+    options: {
+      plugins: (loader) => [
+        require("postcss-custom-properties")
+      ]
+    }
+  }]
 }
 ```
 
@@ -846,11 +853,11 @@ You may need an appropriate loader to handle this file type.
 
 ```
 resolve: {
-    // 在当前目录查找
-    modules: [path.resolve('node_modules')],
-    alias: {
-        'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
-    }
+  // 在当前目录查找
+  modules: [path.resolve('node_modules')],
+  alias: {
+      'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
+  }
 },
 ```
 
@@ -862,14 +869,14 @@ import 'bootstrapCss'  // 在node_modules查找
 
 ```
 resolve: {
-    // 在当前目录查找
-    modules: [path.resolve('node_modules')],
-    // alias: {
-    //     'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
-    // },
-    mainFields: ['style', 'main'],   // 先用bootstrap中在package中的style,没有在用main
-    // mainFiles: []  // 入口文件的名字 默认index
-    extensions: ['.js', '.css', '.json']  // 当没有拓展命的时候，先默认js、次之css、再次之json
+  // 在当前目录查找
+  modules: [path.resolve('node_modules')],
+  // alias: {
+  //     'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
+  // },
+  mainFields: ['style', 'main'],   // 先用bootstrap中在package中的style,没有在用main
+  // mainFiles: []  // 入口文件的名字 默认index
+  extensions: ['.js', '.css', '.json']  // 当没有拓展命的时候，先默认js、次之css、再次之json
 },
 ```
 
@@ -880,11 +887,11 @@ resolve: {
 ```
 let url = ''
 if (DEV === 'dev') {
-    // 开发环境
-    url = 'http://localhost:3000'
+  // 开发环境
+  url = 'http://localhost:3000'
 } else {
-    // 生成环境
-    url = 'http://www.mayufo.cn'
+  // 生成环境
+  url = 'http://www.mayufo.cn'
 }
 ```
 
@@ -892,10 +899,10 @@ if (DEV === 'dev') {
 
 ```
 new webpack.DefinePlugin({
-    // DEV: '"production"',
-    DEV: JSON.stringify('production'),
-    FLAG: 'true',   // 布尔
-    EXPRESSION: '1 + 1'   // 字符串 如果希望是字符串 JSON.stringify('1 + 1')
+  // DEV: '"production"',
+  DEV: JSON.stringify('production'),
+  FLAG: 'true',   // 布尔
+  EXPRESSION: '1 + 1'   // 字符串 如果希望是字符串 JSON.stringify('1 + 1')
 })
 ```
 
@@ -924,45 +931,45 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: {
-        home: './src/index.js'
-    },
-    output: {
-        filename: "[name].js",
-        path: path.resolve(process.cwd(), 'dist3')
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            '@babel/preset-env'
-                        ]
-                    }
-                }
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader', {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: (loader) => [
-                            require("postcss-custom-properties")
-                        ]
-                    }
-                }]
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: 'index.html'
-        })
+  entry: {
+    home: './src/index.js'
+  },
+  output: {
+    filename: "[name].js",
+    path: path.resolve(process.cwd(), 'dist3')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env'
+            ]
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: (loader) => [
+              require("postcss-custom-properties")
+            ]
+          }
+        }]
+      }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html'
+    })
+  ]
 }
 
 ```
@@ -973,11 +980,10 @@ module.exports = {
 let merge = require('webpack-merge')
 let base = require('./webpack.base4.js')
 
-
 module.exports = merge(base, {
-    mode: 'development',
-    devServer: {},
-    devtool: 'source-map'
+  mode: 'development',
+  devServer: {},
+  devtool: 'source-map'
 })
 
 ```
@@ -988,9 +994,8 @@ module.exports = merge(base, {
 let merge = require('webpack-merge')
 let base = require('./webpack.base4.js')
 
-
 module.exports = merge(base, {
-    mode: 'production'
+  mode: 'production'
 })
 
 ```
@@ -999,8 +1004,8 @@ module.exports = merge(base, {
 
 ```
 "scripts": {
-    "build": "webpack-dev-server  --config webpack.prod4.js",
-    "dev": "webpack-dev-server --config webpack.dev4.js"
+  "build": "webpack-dev-server  --config webpack.prod4.js",
+  "dev": "webpack-dev-server --config webpack.dev4.js"
 },
 ```
 
@@ -1017,34 +1022,34 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    module: {
-      rules: [
-          {
-              test: /\.js$/,
-              use: {
-                  loader: 'babel-loader',
-                  options: {
-                      presets: [
-                          '@babel/preset-env',
-                          '@babel/preset-react'
-                      ]
-                  }
-              }
-          },
-      ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: 'index.html'
-        }),
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
+          }
+        }
+      },
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html'
+    }),
+  ]
 }
 
 ```
@@ -1057,19 +1062,20 @@ module: {
     noParse: /jquery/, // 不用解析某些包的依赖
     rules: [
       {
-          test: /\.js$/,
-          use: {
-              loader: 'babel-loader',
-              options: {
-                  presets: [
-                      '@babel/preset-env',
-                      '@babel/preset-react'
-                  ]
-              }
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
           }
+        }
       },
   ]
-},
+}
+
 ```
 运行`npx webpack`
 
@@ -1080,18 +1086,18 @@ module: {
 ```
 rules: [
   {
-      test: /\.js$/,
-      exclude: '/node_modules/',   // 排除
-      include: path.resolve('src'),  // 在这个范围内
-      use: {
-          loader: 'babel-loader',
-          options: {
-              presets: [
-                  '@babel/preset-env',
-                  '@babel/preset-react'
-              ]
-          }
+    test: /\.js$/,
+    exclude: '/node_modules/',   // 排除
+    include: path.resolve('src'),  // 在这个范围内
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-react'
+        ]
       }
+    }
   }
 ```
 
@@ -1137,13 +1143,13 @@ console.log(r);
   exclude: '/node_modules/',
   include: path.resolve('src'),
   use: {
-      loader: 'babel-loader',
-      options: {
-          presets: [
-              '@babel/preset-env',
-              '@babel/preset-react'
-          ]
-      }
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+      ]
+    }
   }
 }
 ```
@@ -1173,24 +1179,24 @@ render(<h1>111111</h1>, window.root)
 let path = require('path')
 let webpack = require('webpack')
 module.exports = {
-    mode: 'development',
-    entry: {
-        // test: './src/test.js'
-        react: ['react', 'react-dom']
-    },
-    output: {
-        filename: '_dll_[name].js',  // 产生的文件名
-        path: path.resolve(__dirname, 'dist'),
-        library: '_dll_[name]',     // 给输出的结果加个名字
-        // libraryTarget: 'var'   // 配置如何暴露 library
-        // commonjs 结果放在export属性上， umd统一资源模块, 默认是var
-    },
-    plugins: [
-       new webpack.DllPlugin({
-           name: '_dll_[name]',   // name === library
-           path: path.resolve(__dirname, 'dist', 'manifest.json')  // manifest.json 定义了各个模块的路径
-       })
-    ]
+  mode: 'development',
+  entry: {
+    // test: './src/test.js'
+    react: ['react', 'react-dom']
+  },
+  output: {
+    filename: '_dll_[name].js',  // 产生的文件名
+    path: path.resolve(__dirname, 'dist'),
+    library: '_dll_[name]',     // 给输出的结果加个名字
+    // libraryTarget: 'var'   // 配置如何暴露 library
+    // commonjs 结果放在export属性上， umd统一资源模块, 默认是var
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      name: '_dll_[name]',   // name === library
+      path: path.resolve(__dirname, 'dist', 'manifest.json')  // manifest.json 定义了各个模块的路径
+    })
+  ]
 }
 ```
 
@@ -1212,9 +1218,9 @@ module.exports = {
 在webpack.config.js 中配置，现在动态链接库`manifest.json`中查找,如果没有再打包react
 ```
 plugins: [
-    new webpack.DllReferencePlugin({
-        manifest: path.resolve(__dirname, 'dist', 'manifest.json')
-    })
+  new webpack.DllReferencePlugin({
+    manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+  })
 ]
 
 ```
@@ -1240,27 +1246,27 @@ let Happypack = require('happypack')
 
 
 rules: [
-    {
-        test: /\.js$/,
-        exclude: '/node_modules/',
-        include: path.resolve('src'),
-        use: 'happypack/loader?id=js'
-    },
+  {
+    test: /\.js$/,
+    exclude: '/node_modules/',
+    include: path.resolve('src'),
+    use: 'happypack/loader?id=js'
+  },
 ]
 
 plugins: [
-    new Happypack({
-        id: 'js',
-        use: [{
-            loader: 'babel-loader',
-            options: {
-                presets: [
-                    '@babel/preset-env',
-                    '@babel/preset-react'
-                ]
-            }
-        }]
-    })
+  new Happypack({
+    id: 'js',
+    use: [{
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-react'
+        ]
+      }
+    }]
+  })
 ]
 ```
 
@@ -1270,13 +1276,13 @@ css启用多线程
 ```
 
 {
-    test: /\.css$/,
-    use: 'happypack/loader?id=css'
+  test: /\.css$/,
+  use: 'happypack/loader?id=css'
 }
 
- new Happypack({
-    id: 'css',
-    use: ['style-loader', 'css-loader']
+new Happypack({
+  id: 'css',
+  use: ['style-loader', 'css-loader']
 }),
 ```
 
@@ -1286,15 +1292,15 @@ css启用多线程
 
 ```
 let sum = (a, b) => {
-    return a + b + 'sum'
+  return a + b + 'sum'
 }
 
 let minus = (a, b) => {
-    return a - b + 'minus';
+  return a - b + 'minus';
 }
 
 export default {
- sum, minus
+  sum, minus
 }
 ```
 
@@ -1351,15 +1357,15 @@ console.log(r.default.sum(1,2));console.log(6,"---------")
 
 ```
 optimization: {
-    splitChunks: {  // 分割代码块，针对多入口
-        cacheGroups: {   // 缓存组
-            common: {   // 公共模块
-                minSize: 0,  // 大于多少抽离
-                minChunks: 2,  // 使用多少次以上抽离抽离
-                chunks: 'initial'  // 从什么地方开始,刚开始
-            }
-        }
+  splitChunks: {  // 分割代码块，针对多入口
+    cacheGroups: {   // 缓存组
+      common: {   // 公共模块
+        minSize: 0,  // 大于多少抽离
+        minChunks: 2,  // 使用多少次以上抽离抽离
+        chunks: 'initial'  // 从什么地方开始,刚开始
+      }
     }
+  }
 },
 ```
 [SplitChunksPlugin](https://webpack.docschina.org/plugins/split-chunks-plugin/)
@@ -1389,15 +1395,15 @@ console.log('other.js');
 
 ```
 optimization: {
-    splitChunks: {  // 分割代码块，针对多入口
-        cacheGroups: {   // 缓存组
-            common: {   // 公共模块
-                minSize: 0,  // 大于多少抽离
-                minChunks: 2,  // 使用多少次以上抽离抽离
-                chunks: 'initial'  // 从什么地方开始,刚开始
-            }
-        }
-    },
+  splitChunks: {  // 分割代码块，针对多入口
+    cacheGroups: {   // 缓存组
+      common: {   // 公共模块
+        minSize: 0,  // 大于多少抽离
+        minChunks: 2,  // 使用多少次以上抽离抽离
+        chunks: 'initial'  // 从什么地方开始,刚开始
+      }
+    }
+  },
 },
 ```
 
@@ -1417,22 +1423,22 @@ console.log($);
 
 ```
 optimization: {
-    splitChunks: {  // 分割代码块，针对多入口
-        cacheGroups: {   // 缓存组
-            common: {   // 公共模块
-                minSize: 0,  // 大于多少抽离
-                minChunks: 2,  // 使用多少次以上抽离抽离
-                chunks: 'initial'  // 从什么地方开始,刚开始
-            },
-            vendor: {
-                priority: 1, // 增加权重,先抽离第三方
-                test: /node_modules/,
-                minSize: 0,  // 大于多少抽离
-                minChunks: 2,  // 使用多少次以上抽离抽离
-                chunks: 'initial'  // 从什么地方开始,刚开始
-            }
-        }
-    },
+  splitChunks: {  // 分割代码块，针对多入口
+    cacheGroups: {   // 缓存组
+      common: {   // 公共模块
+        minSize: 0,  // 大于多少抽离
+        minChunks: 2,  // 使用多少次以上抽离抽离
+        chunks: 'initial'  // 从什么地方开始,刚开始
+      },
+      vendor: {
+        priority: 1, // 增加权重,先抽离第三方
+        test: /node_modules/,
+        minSize: 0,  // 大于多少抽离
+        minChunks: 2,  // 使用多少次以上抽离抽离
+        chunks: 'initial'  // 从什么地方开始,刚开始
+      }
+    }
+  },
 },
 ```
 
@@ -1454,11 +1460,11 @@ let button = document.createElement('button')
 
 button.innerHTML = 'may'
 button.addEventListener('click', function () {
-    console.log('click')
-    // es6草案中的语法，jsonp实现动态加载文件
-    import('./source.js').then(data => {
-        console.log(data.default);
-    })
+  console.log('click')
+  // es6草案中的语法，jsonp实现动态加载文件
+  import('./source.js').then(data => {
+    console.log(data.default);
+  })
 })
 
 
@@ -1470,21 +1476,21 @@ document.body.appendChild(button)
 
 ```
 {
-    test: /\.js$/,
-    exclude: '/node_modules/',
-    include: path.resolve('src'),
-    use: [{
-        loader: 'babel-loader',
-        options: {
-            presets: [
-                '@babel/preset-env',
-                '@babel/preset-react'
-            ],
-            plugins: [
-                '@babel/plugin-syntax-dynamic-import'
-            ]
-        }
-    }]
+  test: /\.js$/,
+  exclude: '/node_modules/',
+  include: path.resolve('src'),
+  use: [{
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+      ],
+      plugins: [
+        '@babel/plugin-syntax-dynamic-import'
+      ]
+    }
+  }]
 }
 ```
 
@@ -1494,12 +1500,12 @@ document.body.appendChild(button)
 
 ```
 plugins: [
-    new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html'
-    }),
-    new webpack.NameModulesPlugin(), // 打印更新的模块路径
-    new webpack.HotModuleReplacementPlugin()
+  new HtmlWebpackPlugin({
+    template: './src/index.html',
+    filename: 'index.html'
+  }),
+  new webpack.NameModulesPlugin(), // 打印更新的模块路径
+  new webpack.HotModuleReplacementPlugin()
 ]
 ```
 
@@ -1512,11 +1518,11 @@ import str from './source'
 console.log(str);
 
 if (module.hot) {
-    module.hot.accept('./source', () => {
-        console.log('文件更新了');
-        require('./source')
-        console.log(str);
-    })
+  module.hot.accept('./source', () => {
+    console.log('文件更新了');
+    require('./source')
+    console.log(str);
+  })
 }
 
 ```
@@ -1538,24 +1544,24 @@ let {SyncHook} = require('tapable')   // 结构同步勾子
 
 
 class Lesson {
-    constructor () {
-        this.hooks = {
-            // 订阅勾子
-            arch: new SyncHook(['name']),
+  constructor () {
+    this.hooks = {
+      // 订阅勾子
+      arch: new SyncHook(['name']),
 
-        }
     }
-    start () {
-        this.hooks.arch.call('may')
-    }
-    tap () {   //  注册监听函数
-        this.hooks.arch.tap('node', function (name) {
-            console.log('node', name)
-        })
-        this.hooks.arch.tap('react', function (name) {
-            console.log('react', name)
-        })
-    }
+  }
+  start () {
+    this.hooks.arch.call('may')
+  }
+  tap () {   //  注册监听函数
+    this.hooks.arch.tap('node', function (name) {
+      console.log('node', name)
+    })
+    this.hooks.arch.tap('react', function (name) {
+      console.log('react', name)
+    })
+  }
 }
 
 
@@ -1570,26 +1576,26 @@ l.start() // 启动勾子
 
 ```
 class SyncHook {  // 勾子是同步的
-    constructor(args) {  // args => ['name']
-        this.tasks = []
-    }
-    tap (name, task) {
-        this.tasks.push(task)
-    }
-    call (...args) {
-        this.tasks.forEach((task) => task(...args))
-    }
+  constructor(args) {  // args => ['name']
+    this.tasks = []
+  }
+  tap (name, task) {
+    this.tasks.push(task)
+  }
+  call (...args) {
+    this.tasks.forEach((task) => task(...args))
+  }
 }
 
 let hook = new SyncHook(['name'])
 
 hook.tap('react', function (name) {
-    console.log('react', name);
+  console.log('react', name);
 })
 
 
 hook.tap('node', function (name) {
-    console.log('node', name);
+  console.log('node', name);
 })
 
 
@@ -1606,29 +1612,28 @@ hook.call('jw')
 ```
 let {SyncBailHook} = require('tapable')   // 解构同步勾子
 
-
 class Lesson {
-    constructor () {
-        this.hooks = {
-            // 订阅勾子
-            arch: new SyncBailHook(['name']),
+  constructor () {
+    this.hooks = {
+      // 订阅勾子
+      arch: new SyncBailHook(['name']),
 
-        }
     }
-    start () {
-        // 发布
-        this.hooks.arch.call('may')
-    }
-    tap () {   //  注册监听函数,订阅
-        this.hooks.arch.tap('node', function (name) {
-            console.log('node', name)
-            return '停止学习'  // 会停止
-            // return undefined
-        })
-        this.hooks.arch.tap('react', function (name) {
-            console.log('react', name)
-        })
-    }
+  }
+  start () {
+    // 发布
+    this.hooks.arch.call('may')
+  }
+  tap () {   //  注册监听函数,订阅
+    this.hooks.arch.tap('node', function (name) {
+      console.log('node', name)
+      return '停止学习'  // 会停止
+      // return undefined
+    })
+    this.hooks.arch.tap('react', function (name) {
+      console.log('react', name)
+    })
+  }
 }
 
 
