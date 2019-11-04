@@ -83,7 +83,7 @@ module.exports = {
     output: {
         filename: 'bundle.[hash:8].js',   // hash: 8只显示8位
         path: path.resolve(__dirname, 'dist'),
-        publicPath: 'http://www.mayufo.cn'  // // 给所有打包文件引入时加前缀，包括css，js，img，如果只想处理图片可以单独在url-loader配置中加publicPath
+        publicPath: ''  // // 给所有打包文件引入时加前缀，包括css，js，img，如果只想处理图片可以单独在url-loader配置中加publicPath
     }
 }
 ```
@@ -93,11 +93,11 @@ module.exports = {
 
 ```
 devServer: {
-    port: 3000,
-    progress: true    // 滚动条
-    // contentBase: ''  // 起服务的地址
-    // open: true    // 自动打开浏览器
-    // compress： true   // 压缩
+  port: 3000,
+  progress: true          // 滚动条
+  contentBase: './build'  // 起服务的地址
+  open: true              // 自动打开浏览器
+  compress： true         // gzip压缩
 }
 ```
 
@@ -130,6 +130,9 @@ plugins: [ // 放着所有webpack插件
 `npm i css-loader style-loader -D`
 
 ```
+// css-loader   作用：用来解析@import这种语法
+// style-loader 作用：把 css 插入到head标签中
+// loader的执行顺序： 默认是从右向左（从下向上）
 module: {    // 模块
         rules: [   // 规则
             // style-loader 把css插入head标签中
@@ -298,9 +301,6 @@ module.exports = {
     ]
 }
 ```
-
-
-
 
 ## es6 转 es5
 
