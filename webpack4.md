@@ -314,34 +314,87 @@ module.exports = {
 `npm i babel-loader @babel/core  @babel/preset-env -D`
 
 ```
-{
-  test: /\.js$/,
-  use: {
-    loader: 'babel-loader',
-    options: {
-      presets: [
-        '@babel/preset-env'
-      ],
-      plugins:[
-        ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-      ]
-    }
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ //预设
+              '@babel/preset-env' 
+            ],
+            plugins:[
+              // 转es7的语法
+              ["@babel/plugin-proposal-decorators", { "legacy": true }],
+              ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+            ]
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
   }
 }
-```
-
-
-## es7的语法
 
 ```
-// class
+
+
+## 转es7的语法
+
+```
+// 转class
 npm i @babel/plugin-proposal-class-properties -D
-// 装饰器
+
+// 转装饰器
 npm i @babel/plugin-proposal-decorators -D
 ```
 
 配置如上
+
+### 其他不兼容的高级语法
+
+```
+使用 @babel/polyfill
+```
+
+## 语法检查 eslint
+
+`npm i eslint eslint-loader -S`
+
+根目录添加 `.eslintrc.json` 配置文件
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            enforce: 'pre'  // previous优先执行  post-普通loader之后执行
+          }
+        }
+      },
+      {
+        test: /\.js$/,      // mormal 普通的loader
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ //预设
+              '@babel/preset-env' 
+            ]
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  }
+}
+
+```
 
 ## 全局变量引入
 
