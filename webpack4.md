@@ -496,18 +496,17 @@ console.log($)
 适合一二情况
 
 ```
-{
-  test: /\.(png|jpg|gif)$/,
-  // 当图片小于多少，用base64,否则用file-loader产生真实的图片
-  use: {
-    loader: 'url-loader',
-    options: {
-      limit: 1,  // 200k 200 * 1024
-      outputPath: '/img/',   // 打包后输出地址
-      publicPath: 'http://www.mayufo.cn'
-    }
+module.export={
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: 'file-loader'
+      }
+    ]
   }
 }
+
 ```
 
 默认会内部生成一张图片到build,生成图片的路径返回回来
@@ -517,11 +516,8 @@ console.log($)
 ```
 import logo from './logo.png'
 
-console.log(logo)
 let image = new Image()
-
 image.src = logo
-
 document.body.appendChild(image)
 ```
 
@@ -557,9 +553,9 @@ div {
   use: {
     loader: 'url-loader',
     options: {
-      limit: 1,  // 200k 200 * 1024
-      outputPath: '/img/',   // 打包后输出地址
-      publicPath: 'http://www.mayufo.cn'
+      limit: 200 * 1024,          // 小于200k变成base64
+      // outputPath: '/img/',     // 打包后输出地址
+      // publicPath: ''           // 给资源加上域名路径
     }
   }
 }
@@ -567,7 +563,7 @@ div {
 
 ## 打包文件分类
 
-图片
+1.图片:
 
 ```
 {
@@ -583,13 +579,13 @@ div {
 },
 ```
 
-css
+2.css:
 
 ```
 plugins: [
-new MiniCssExtractPlugin({
-  filename: 'css/main.css'
-}),
+  new MiniCssExtractPlugin({
+    filename: 'css/main.css'
+  }),
 ]
 ```
 
