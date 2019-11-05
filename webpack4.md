@@ -418,44 +418,63 @@ new webpack.ProvidePlugin({
 
 `npm i expose-loader -D` 暴露全局的`loader`
 
+#### 法1：
+
 可以在js中 `import $ from 'expose-loader?$!jquery'`   // 全局暴露jquery为$符号
 
 可以调用`window.$`
 
+#### 法2：
+
 也可在`webpack.config.js` 中配置 `rules`
 
 ```
-{
-  test: require.resolve('jquery'),
-  use: 'expose-loader?$'
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: require.resolve('jquery'),
+        use: 'expose-loader?$'
+      }
+    ]
+  }
 }
-```
 
+```
 以后在`.js`文件中引入
 
 ```
 import $ from 'jquery'
 ```
 
-2. 如何在每个模块中注入
+#### 法3. 如何在每个模块中注入：
 
 ```
 let webpack = require('webpack')
 
-// 在plugins中配置
-new webpack.ProvidePlugin({
-    $: 'jquery'
-})
-```
+module.exports = {
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery'
+    })
+  ]
+}
 
-3. 在`index.html`中通过`script`标签引入`jquery`, 但是在`js`中，用`import`会重新打包`jquery`,如何避免
+之后代码内直接使用 $
+```
+#### 法4：
+
+在`index.html`中通过`script`标签引入`jquery`, 但是在`js`中，用`import`会重新打包`jquery`,如何避免
 
 从输出的bundle 中排除依赖
 
 ```
-externals: {
-  jquery: 'jQuery'
+module.exports = {
+  externals: { // 告知webpack是外部引入的，不需要打包
+    jquery: 'jQuery'
+  }
 }
+
 ```
 
 此时在index.js上
@@ -463,7 +482,7 @@ externals: {
 ```
 import $ from 'jquery'
 
-console.log($, 123456)   // 可以正常运行
+console.log($)
 ```
 
 ## webpack图片打包
@@ -511,7 +530,7 @@ document.body.appendChild(image)
 ```
 div {
   background: url("./logo.png");
- }
+}
 ```
 
 第三种情况: 解析`html`中的`image`
