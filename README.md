@@ -6,7 +6,7 @@
 - [js常用小技巧( 推荐:★★★★★ )](/js常用小技巧.md)
 - [宏任务与微任务](/js/宏任务与微任务.md)
 - [call,apply与bind](/js/call,apply与bind.md)
-- [new运算符](/js/new运算符.md)
+- [new运算符详解](/js/new运算符.md)
 - [es5构造函数和原型](/js/构造函数和原型.md)
 
 ### ***React***
@@ -34,7 +34,7 @@
 - [你不知道的JavaScript（下卷）](/books/你不知道的JavaScript（下卷）.pdf)
 
 ### ***webpack***
-- [webpack4](/webpack4.md)
+- [从0到掌握webpack4](/webpack4.md)
 
 ### ***git***
 - [git常用指令](/git/README.md)
