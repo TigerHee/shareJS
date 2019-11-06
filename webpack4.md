@@ -654,23 +654,28 @@ module.exports = {
 
 `yarn add @babel/core  @babel/preset-env babel-loader  webpack-dev-server -D`
 
-`devtool: 'source-map'` // 增加映射文件调试源代码
-
+```
+module.exports = {
+  devtool: 'source-map' // 增加映射文件调试源代码
+}
+```
 1. 源码映射 会标识错误的代码 打包后生成独立的文件 大而全 「source-map」
-2. 不会陈胜单独的文件 但是可以显示行和列  「evl-source-map」
-3. 不会产生列，产生单独的映射文件  「cheap-module-source-map」
-4. 不会产生文件 集成在打包后的文件中 不会产生列 「cheap-module-eval-source-map」
+2. 不会陈胜单独的文件 但是可以显示行和列  「eval-source-map」
+3. 不会产生列有行，产生单独的映射文件  「cheap-module-source-map」
+4. 不会产生文件 集成在打包后的文件中 不会产生列有行 「cheap-module-eval-source-map」
 
 
 ## `watch` 改完代表重新打包实体
 
 ```
-watch: true,
-watchOptions: {
-  poll: 1000,   // 每秒检查一次变动
-  aggregateTimeout: 300,  // 当第一个文件更改，会在重新构建前增加延迟
-  ignored: /node_modules/  // 对于某些系统，监听大量文件系统会导致大量的 CPU 或内存占用。这个选项可以排除一些巨大的文件夹，
-},
+module.exports = {
+  watch: true,
+  watchOptions: {
+    poll: 1000,              // 每秒监听1000次
+    aggregateTimeout: 300,   // 防抖，当第一个文件更改，会在重新构建前增加延迟
+    ignored: /node_modules/  // 对于某些系统，监听大量文件系统会导致大量的 CPU 或内存占用。这个选项可以排除一些巨大的文件夹，
+  },
+}
 ```
 
 
@@ -685,12 +690,15 @@ watchOptions: {
 
 ```
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-output: {
-  path: path.resolve(process.cwd(), 'dist'),
-},
-plugins: [
-  new CleanWebpackPlugin()
-]
+
+module.exports = {
+  output: {
+    path: path.resolve(process.cwd(), 'dist'),
+  },
+  plugins: [
+    new CleanWebpackPlugin('./dist')
+  ]
+}
 ```
 
 2. `copyWebpackPlugin`
@@ -702,10 +710,10 @@ plugins: [
 ```
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const config = {
+module.exports = {
   plugins: [
     new CopyWebpackPlugin([
-      {from: './src/doc', to: './public'}
+      {from: 'doc', to: './dist'}
     ])
   ]
 }
@@ -772,14 +780,16 @@ xhr.send();
 `webpack.config.js`
 
 ```
-devServer: {
-  proxy: {
-    '/api': 'http://localhost:3000' // 配置一个代理
-  }
-},
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
+  },
+}
 ```
 
-## 如果后端给的请求没有API 「跨域」
+## 1.如果后端给的请求没有API 「跨域」
 
 ```
 // express
@@ -810,7 +820,7 @@ devServer: {
 }
 ```
 
-## 前端只想单纯mock数据 「跨域」
+## 2.前端只想单纯mock数据 「跨域」
 
 ```
 devServer: {
@@ -824,14 +834,14 @@ devServer: {
   //       }
   //   }
   before: function (app) {  // 勾子
-      app.get('/api/user', (req, res) => {
-          res.json({name: 'mayufo - before'})
-      })
+    app.get('/api/user', (req, res) => {
+      res.json({name: 'tigerHee'})
+    })
   }
 },
 ```
 
-## 有服务端，不用代理, 服务端启动webpack 「跨域」
+## 3.有服务端，不用代理, 服务端启动webpack 「跨域」
 
 `server.js`中启动`webpack`
 
@@ -935,12 +945,14 @@ import 'bootstrapCss'  // 在node_modules查找
 
 ## 省略扩展名
 
+extensions:
+
 ```
 resolve: {
   // 在当前目录查找
   modules: [path.resolve('node_modules')],
   // alias: {
-  //     'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
+  //   'bootstrapCss': 'bootstrap/dist/css/bootstrap.css'
   // },
   mainFields: ['style', 'main'],   // 先用bootstrap中在package中的style,没有在用main
   // mainFiles: []  // 入口文件的名字 默认index
@@ -1424,17 +1436,19 @@ console.log(r.default.sum(1,2));console.log(6,"---------")
 `webpack.config.js`
 
 ```
-optimization: {
-  splitChunks: {  // 分割代码块，针对多入口
-    cacheGroups: {   // 缓存组
-      common: {   // 公共模块
-        minSize: 0,  // 大于多少抽离
-        minChunks: 2,  // 使用多少次以上抽离抽离
-        chunks: 'initial'  // 从什么地方开始,刚开始
+module.exports = {
+  optimization: {
+    splitChunks: {             // 分割代码块，针对多入口
+      cacheGroups: {           // 缓存组
+        common: {              // 公共模块
+          minSize: 0,          // 大于多少抽离
+          minChunks: 2,        // 使用多少次以上抽离抽离
+          chunks: 'initial'    // 从什么地方开始, 从入口开始
+        }
       }
     }
-  }
-},
+  },
+}
 ```
 [SplitChunksPlugin](https://webpack.docschina.org/plugins/split-chunks-plugin/)
 
@@ -1462,17 +1476,19 @@ console.log('other.js');
 `webpack.config.js`
 
 ```
-optimization: {
-  splitChunks: {  // 分割代码块，针对多入口
-    cacheGroups: {   // 缓存组
-      common: {   // 公共模块
-        minSize: 0,  // 大于多少抽离
-        minChunks: 2,  // 使用多少次以上抽离抽离
-        chunks: 'initial'  // 从什么地方开始,刚开始
+module.exports = {
+  optimization: {
+    splitChunks: {             // 分割代码块，针对多入口
+      cacheGroups: {           // 缓存组
+        common: {              // 公共模块
+          minSize: 0,          // 大于多少抽离
+          minChunks: 2,        // 使用多少次以上抽离抽离
+          chunks: 'initial'    // 从什么地方开始, 从入口开始
+        }
       }
     }
   },
-},
+}
 ```
 
 2. 抽离第三方模块
@@ -1487,29 +1503,28 @@ import $ from 'jquery'
 console.log($);
 ```
 
-`webpack.config.js`
+修改`webpack.config.js`配置：
 
 ```
 optimization: {
-  splitChunks: {  // 分割代码块，针对多入口
-    cacheGroups: {   // 缓存组
-      common: {   // 公共模块
-        minSize: 0,  // 大于多少抽离
-        minChunks: 2,  // 使用多少次以上抽离抽离
-        chunks: 'initial'  // 从什么地方开始,刚开始
+  splitChunks: {              // 分割代码块，针对多入口
+    cacheGroups: {            // 缓存组
+      common: {               // 公共模块
+        minSize: 0,           // 大于多少抽离
+        minChunks: 2,         // 使用多少次以上抽离抽离
+        chunks: 'initial'     // 从什么地方开始,刚开始
       },
       vendor: {
-        priority: 1, // 增加权重,先抽离第三方
-        test: /node_modules/,
-        minSize: 0,  // 大于多少抽离
-        minChunks: 2,  // 使用多少次以上抽离抽离
-        chunks: 'initial'  // 从什么地方开始,刚开始
+        priority: 1,          // 增加权重, (先抽离第三方)
+        test: /node_modules/, // 把此目录下的抽离
+        minSize: 0,           // 大于多少抽离
+        minChunks: 2,         // 使用多少次以上抽离抽离
+        chunks: 'initial'     // 从什么地方开始,刚开始
       }
     }
   },
 },
 ```
-
 
 ## 懒加载(延迟加载)
 
@@ -1525,17 +1540,14 @@ export default 'mayufo'
 
 ```
 let button = document.createElement('button')
-
-button.innerHTML = 'may'
+button.innerHTML = 'hello'
 button.addEventListener('click', function () {
   console.log('click')
   // es6草案中的语法，jsonp实现动态加载文件
   import('./source.js').then(data => {
-    console.log(data.default);
+    console.log(data.default)
   })
 })
-
-
 document.body.appendChild(button)
 
 ```
@@ -1572,8 +1584,8 @@ plugins: [
     template: './src/index.html',
     filename: 'index.html'
   }),
-  new webpack.NameModulesPlugin(), // 打印更新的模块路径
-  new webpack.HotModuleReplacementPlugin()
+  new webpack.NameModulesPlugin(),          // 打印更新的模块路径
+  new webpack.HotModuleReplacementPlugin()  // 热更新插件
 ]
 ```
 
@@ -1616,7 +1628,6 @@ class Lesson {
     this.hooks = {
       // 订阅勾子
       arch: new SyncHook(['name']),
-
     }
   }
   start () {

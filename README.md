@@ -7,6 +7,7 @@
 - [宏任务与微任务](/js/宏任务与微任务.md)
 - [call,apply与bind](/js/call,apply与bind.md)
 - [new运算符](/js/new运算符.md)
+- [es5构造函数和原型](/js/构造函数和原型.md)
 
 ### ***React***
 - [01.react-基础](/react/01.react-basic.md)
