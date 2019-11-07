@@ -997,8 +997,8 @@ new webpack.DefinePlugin({
 `yarn add webpack-merge -D`
 
 
-`npx run build -- config webpack.dev4.js`
-`npx run build -- config webpack.build.js`
+`npm run build -- -- config webpack.dev4.js`
+`npm run build -- -- config webpack.build.js`
 
 [官方文档](https://webpack.docschina.org/guides/production/)
 
@@ -1084,7 +1084,7 @@ module.exports = merge(base, {
 
 ```
 "scripts": {
-  "build": "webpack-dev-server  --config webpack.prod4.js",
+  "build": "webpack  --config webpack.prod4.js",
   "dev": "webpack-dev-server --config webpack.dev4.js"
 },
 ```
