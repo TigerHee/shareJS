@@ -3,7 +3,7 @@
 ---
 new进行了如下操作：
   - 创建一个新对象obj
-  - 把obj的__proto__指向Dog.prototype 实现继承
+  - 把obj的__proto__指向构造函数的prototype对象 实现继承
   - 将步骤1新创建的对象obj作为this的上下文 
   - 返回创建的对象obj（如果该函数没有返回对象，则返回this）
 ---

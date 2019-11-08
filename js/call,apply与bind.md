@@ -29,7 +29,7 @@ var obj = {
   name: 'objName'
 }
 function getName(p1, p2) {
-  console.log('name === ', name)
+  console.log('name === ', this.name)
   console.log('p1 === ', p1)
   console.log('p2 === ', p2)
 }
