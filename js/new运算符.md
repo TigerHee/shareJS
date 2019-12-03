@@ -10,7 +10,7 @@ new进行了如下操作：
 
 ##### *自己实现一个new：*
 
-```
+```js
 function _new(...args) {
   const [constructor, ...otherArgs] = args;
   

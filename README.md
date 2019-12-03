@@ -9,6 +9,7 @@
 - [new运算符详解](/js/new运算符.md)
 - [es5构造函数和原型](/js/构造函数和原型.md)
 - [eval和with欺骗词法作用域影响性能](/js/eval和with欺骗词法作用域影响性能.md)
+- [排序算法](/js/排序算法.md)
 
 ### ***React***
 - [从0开始使用webpack构建一个React脚手架](https://github.com/TigerHee/react-cli-diy)

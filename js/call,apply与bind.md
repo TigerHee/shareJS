@@ -4,11 +4,11 @@
 
 call或apply会自动执行对应的函数
 
-```
+```js
 fun.call(thisNew[, arg1[, arg2[, ...]]])
 ```
 
-```
+```js
 fun.apply(thisNew[, argsArray])
 ```
 
@@ -23,7 +23,7 @@ thisNew： fun函数运行时指定的this值，可能的值为：
 
 call:
 
-```
+```js
 window.name = 'windowName'
 var obj = {
   name: 'objName'
@@ -39,7 +39,7 @@ getName.call(obj, 'str1', 'str2')
 
 apply:
 
-```
+```js
 Math.max.apply(null, [2, 3, 1, 4])
 ```
 
@@ -47,13 +47,13 @@ Math.max.apply(null, [2, 3, 1, 4])
 
 bind()方法会创建一个新函数，称为绑定函数。bind是ES5新增的一个方法，不会执行对应的函数，而是返回对绑定函数的引用。
 
-```
+```js
 fun.bind(thisNew[, arg1[, arg2[, ...]]]);
 ```
 
 用例：
 
-```
+```js
 var $ = document.querySelectorAll.bind(document)
 ```
 
@@ -73,7 +73,7 @@ var $ = document.querySelectorAll.bind(document)
 
 call:
 
-```
+```js
 Function.prototype.customCall = function () {
   if (typeof this !== 'function') {
     throw new TypeError('error!')
@@ -89,7 +89,7 @@ Function.prototype.customCall = function () {
 
 apply:
 
-```
+```js
 Function.prototype.customApply = function () {
   if (typeof this !== 'function') {
     throw new TypeError('error!')
@@ -104,7 +104,7 @@ Function.prototype.customApply = function () {
 
 bind:
 
-```
+```js
 Function.prototype.customBind = function () {
   if (typeof this !== 'function') {
     throw new TypeError('error!')
