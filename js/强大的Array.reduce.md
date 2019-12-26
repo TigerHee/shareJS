@@ -57,11 +57,11 @@ function p3(a) {
     resolve(a * 4);
   });
 }
-let initVal = 1
+let initVal = 1;
 [p1, p2, p3].reduce(
   (promiseChain, currentFunction) => promiseChain.then(currentFunction),
   Promise.resolve(initVal)
-)
+).then(res=>console.log(res))
 ```
 
 ##### 二维数组转一维数组
