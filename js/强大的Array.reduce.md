@@ -23,7 +23,7 @@ arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]
 
 #### 使用场景：
 
-###### 数组求和
+##### 数组求和
 
 ```js
 [ 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0)
@@ -37,7 +37,7 @@ arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]
 }, 0)
 ```
 
-###### 按序执行 Promise
+##### 按序执行 Promise
 
 在不想用 async await 的时，同样可以处理 promise 回调链的问题
 
@@ -64,13 +64,13 @@ let initVal = 1
 )
 ```
 
-###### 二维数组转一维数组
+##### 二维数组转一维数组
 
 ```js
 [[0, 1], [2, 3], [4, 5]].reduce(( acc, cur ) => acc.concat(cur), [])
 ```
 
-###### 统计数组中每个元素出现的次数
+##### 统计数组中每个元素出现的次数
 
 ```js
 ['aa', 'bb', 'aa', 'cc', 'aa', 'bb'].reduce((allNames, name) => {
@@ -82,4 +82,16 @@ let initVal = 1
   }
   return allNames;
 }, {})
+```
+
+##### 数组去重
+
+```js
+[1, 2, 3, 4, 4, 1].reduce((acc, cur) => {
+  if (acc.includes(cur)) {
+    return acc
+  } else {
+    return [...acc, cur]
+  }
+}, [])
 ```
