@@ -4,7 +4,7 @@
 
 #### 语法：
 
-```
+```js
 arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
 ```
 
@@ -25,13 +25,13 @@ arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]
 
 ###### 数组求和
 
-```
+```js
 [ 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0)
 ```
 
 ###### 累加对象数组里的值
 
-```
+```js
 [{x: 1}, {x:2}, {x:3}].reduce(function (acc, cur) {
     return acc + cur.x;
 }, 0)
@@ -41,7 +41,7 @@ arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]
 
 在不想用 async await 的时，同样可以处理 promise 回调链的问题
 
-```
+```js
 function p1(a) {
   return new Promise((resolve, reject) => {
     resolve(a * 2);
@@ -66,13 +66,13 @@ let initVal = 1
 
 ###### 二维数组转一维数组
 
-```
+```js
 [[0, 1], [2, 3], [4, 5]].reduce(( acc, cur ) => acc.concat(cur), [])
 ```
 
 ###### 统计数组中每个元素出现的次数
 
-```
+```js
 ['aa', 'bb', 'aa', 'cc', 'aa', 'bb'].reduce((allNames, name) => {
   if (name in allNames) {
     allNames[name]++;
