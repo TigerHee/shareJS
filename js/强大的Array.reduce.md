@@ -29,7 +29,7 @@ arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]
 [ 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0)
 ```
 
-###### 累加对象数组里的值
+##### 累加对象数组里的值
 
 ```js
 [{x: 1}, {x:2}, {x:3}].reduce(function (acc, cur) {
