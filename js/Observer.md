@@ -10,21 +10,21 @@ ResizeObserver 接口可以监听到 Element 的内容区域或 SVGElement的边
 
   - `ResizeObserver()`
   
-  创建并返回一个ResizeObserver对象。
+    创建并返回一个ResizeObserver对象。
 
 - 方法：
 
   - `ResizeObserver.observe()`
 
-  开始观察指定的 Element或 SVGElement。
+    开始观察指定的 Element或 SVGElement。
 
   - `ResizeObserver.disconnect()`
 
-  取消和结束目标对象上所有对 Element或 SVGElement 观察。
+    取消和结束目标对象上所有对 Element或 SVGElement 观察。
 
   - `ResizeObserver.unobserve()`
 
-  结束观察指定的Element或 SVGElement。
+    结束观察指定的Element或 SVGElement。
 
 - 示例：
 
