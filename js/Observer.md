@@ -109,8 +109,7 @@ Intersection Observer API 允许你配置一个回调函数，每当目标(targe
     在无限滚动的底部放一个footer，监听footer的可见否来实现无限滚动
 
     ```js
-    var Observer = new IntersectionObserver(
-    function (entries) {
+    let Observer = new IntersectionObserver((entries) => {
       // 如果footer不可见，就返回
       if (entries[0].intersectionRatio <= 0) return;
       // 加载更多
