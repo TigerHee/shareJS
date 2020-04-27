@@ -6,13 +6,13 @@
 
 ResizeObserver 接口可以监听到 Element 的内容区域或 SVGElement的边界框改变。内容区域则需要减去内边距padding。
 
-- 构造器：
+- #### 构造器：
 
   - `ResizeObserver()`
   
     创建并返回一个ResizeObserver对象。
 
-- 方法：
+- #### 方法：
 
   - `ResizeObserver.observe()`
 
@@ -26,7 +26,7 @@ ResizeObserver 接口可以监听到 Element 的内容区域或 SVGElement的边
 
     结束观察指定的Element或 SVGElement。
 
-- 示例：
+- #### 示例：
 
   监听body的size变化:
 
@@ -52,17 +52,17 @@ Intersection Observer API 允许你配置一个回调函数，每当目标(targe
 
 目标(target)元素与根(root)元素之间的交叉度是交叉比(intersection ratio)。这是目标(target)元素相对于根(root)的交集百分比的表示，它的取值在0.0和1.0之间。
 
-- 构造器：
+- #### 构造器：
 
   - `IntersectionObserver(callback, options)`
 
-  `callback`接收参数： 
+  ##### `callback`接收参数： 
 
   - IntersectionObserverEntry对象
 
   - 观察者的列表
 
-  `options`对象属性：
+  ##### `options`对象属性：
 
   - root：
 
@@ -76,7 +76,7 @@ Intersection Observer API 允许你配置一个回调函数，每当目标(targe
 
     可以是单一的number (eg: 0.5) 或是number数组 (eg: [0, 0.25, 0.5, 0.75, 1])，target元素和root元素相交程度达到该值的时候IntersectionObserver注册的回调函数将会被执行。
 
-  - `IntersectionObserverEntry`对象属性：
+  ##### `IntersectionObserverEntry`对象属性：
 
     - time：
 
@@ -102,7 +102,7 @@ Intersection Observer API 允许你配置一个回调函数，每当目标(targe
 
       目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0
 
-- 示例：
+- #### 示例：
 
   - 无限滚动：
 
