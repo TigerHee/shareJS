@@ -11,7 +11,7 @@
 - [eval和with欺骗词法作用域影响性能](/js/eval和with欺骗词法作用域影响性能.md)
 - [排序算法](/js/排序算法.md)
 - [强大的Array.reduce](/js/强大的Array.reduce.md)
-- [Observer API](/js/Observer.md)
+- [Observer API(监听resize和无限滚动的新方案)](/js/Observer.md)
 
 ### ***React***
 - [从0开始使用webpack构建一个React脚手架](https://github.com/TigerHee/react-cli-diy)
