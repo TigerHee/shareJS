@@ -28,6 +28,7 @@
 - [11.React源码学习-任务调度](/react/11.React源码学习-任务调度.md)
 - [12.React源码学习-beginWork](/react/12.React源码学习-beginWork.md)
 - [13.React源码学习-commit](/react/13.React源码学习-commit.md)
+- [14.umi2+Antd实现动态主题色切换实践](/react/14.umi2+Antd实现动态主题色切换实践.md)
 
 ### ***FE***
 - [重绘与回流](/FE/重绘与回流.md)
