@@ -35,7 +35,7 @@ IdentityFile ~/.ssh/id_rsa_tiger
 ```
 4. 添加密钥：
 ```
-ssh-add -K ~/.ssh/id_rsa_tiger
+ssh-add ~/.ssh/id_rsa_tiger
 ```
 
 5. 到要用git2的仓库修改其git配置：
