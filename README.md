@@ -13,6 +13,9 @@
 - [强大的Array.reduce](/js/强大的Array.reduce.md)
 - [Observer API(监听resize和无限滚动的新方案)](/js/Observer.md)
 
+### node
+- [常用 npm 包推荐](/node/npm.md)
+
 ### ***React***
 - [从0开始使用webpack构建一个React脚手架](https://github.com/TigerHee/react-cli-diy)
 - [01.react-基础](/react/01.react-basic.md)
