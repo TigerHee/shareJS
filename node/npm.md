@@ -44,3 +44,16 @@ objectPath.get(obj, ["a.c.b"], "DEFAULT");
   })}
 />;
 ```
+
+## package.json
+
+- ### 锁死依赖包的依赖：
+
+```js
+{
+  "dependencies": {},
+  "resolutions": {
+    "包名": "版本号"
+  }
+}
+```
