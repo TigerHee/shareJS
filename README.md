@@ -43,7 +43,8 @@
 - [你不知道的JavaScript（下卷）](/books/你不知道的JavaScript（下卷）.pdf)
 
 ### ***webpack***
-- [从0到掌握webpack4](/webpack4.md)
+- [从0到掌握webpack4](/webpack/webpack4.md)
+- [使用HtmlWebpackPlugin向html内插入第三方cdn资源](/webpack/HtmlWebpackPlugin.md)
 
 ### ***git***
 - [git常用指令](/git/README.md)
