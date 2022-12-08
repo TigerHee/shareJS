@@ -3,7 +3,7 @@
 以往我们需要向页面内插入csn资源通常是自己写函数，然后在index.js内调用如：
 
   ```js
-  export const insertSensors = () => {
+  export const insertJs = () => {
     const scriptEl = document.createElement('script');
     scriptEl.type = 'text/javascript';
     scriptEl.async = true;
@@ -12,6 +12,7 @@
 
     document.body.appendChild(scriptEl);
   };
+  // 然后在入口js文件内调用 insertJs
   ```
 
 而使用 HtmlWebpackPlugin 则会使资源插入更加优雅:
