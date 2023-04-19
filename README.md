@@ -15,6 +15,7 @@
 
 ### node
 - [常用 npm 包推荐](/node/npm.md)
+- [package.json 笔记](/node/package.md)
 
 ### ***React***
 - [从0开始使用webpack构建一个React脚手架](https://github.com/TigerHee/react-cli-diy)
